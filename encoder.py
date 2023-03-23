@@ -16,6 +16,13 @@ def encode(password):
     password_new = ''.join(password_list)
     return password_new
 
+def password_decoder(encoded_password):
+    decoded_password = ""
+    for digit in encoded_password:
+        decoded_digit = str((int(digit) - 3) % 10)
+        decoded_password += decoded_digit
+    return decoded_password
+
 
 if __name__ == '__main__':
     continuing = True
@@ -27,7 +34,9 @@ if __name__ == '__main__':
             password = encode(password)
             print("Your password has been encoded and stored!")
         elif option == 2:
-            pass
+            password_new = password_decoder(password)
+            print(f"The econded password is {password}, and the original password is {password_new}.")
+      
         elif option == 3:
             continuing = False
 
